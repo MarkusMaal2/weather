@@ -17,13 +17,20 @@ function weatherDataFetch(city) {
 }
 
 function cityWeather(e) {
-    weatherDataFetch("Tallinn")
+    //weatherDataFetch("Cairo")
+    weatherDataFetch("Tartu")
 }
 
 function displayWeather(data) {
     let celcius = Math.round(parseFloat(data.main.temp)-273.15)
     let description = data.weather[0].description
+    let tempElement = document.querySelector("#temp")
     document.querySelector("#description").innerHTML = description
-    document.querySelector("#temp").innerHTML = celcius + "&deg;C"
+    tempElement.innerHTML = celcius + "&deg;C"
+    if (celcius > 0) {
+        tempElement.style.color = "orange"
+    } else {
+        tempElement.style.color = "skyblue"
+    }
     document.querySelector("#location").innerHTML = data.name
 }
